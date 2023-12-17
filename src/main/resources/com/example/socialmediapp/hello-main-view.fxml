@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FXMLcontrollers.LoginController">
+   <left>
+      <AnchorPane prefHeight="538.0" prefWidth="322.0" style="-fx-background-color: #2e247f;">
+         <children>
+            <ImageView fitHeight="544.0" fitWidth="342.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/2_auto_x2_light_ai.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="#f2f2f2" layoutX="40.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright 2019. ENSA Al Hoceima." />
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="600.0" prefWidth="382.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="461.0" fitWidth="428.0" layoutY="102.0" opacity="0.28" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/R.jpeg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="Username" layoutX="118.0" layoutY="175.0" prefHeight="42.0" prefWidth="223.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #2e247f; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="Password" layoutX="118.0" layoutY="266.0" prefHeight="42.0" prefWidth="223.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #2e247f; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="Loginbutton" layoutX="110.0" layoutY="422.0" mnemonicParsing="false" onAction="#loginbutton" prefHeight="34.0" prefWidth="239.0" style="-fx-background-color: #3aaa35;" text="Login" textFill="#fcfcfc" />
+            <ImageView fitHeight="99.0" fitWidth="428.0" layoutY="28.0" opacity="0.09" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/R1.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="99.0" fitWidth="428.0" layoutX="9.0" layoutY="498.0" opacity="0.09" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/R1.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="99.0" fitWidth="428.0" layoutX="5.0" layoutY="102.0" opacity="0.09" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/R1.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="99.0" fitWidth="428.0" layoutX="10.0" layoutY="539.0" opacity="0.09" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/R1.jpeg" />
+               </image>
+            </ImageView>
+            <Text fill="#2e247f" layoutX="123.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type your account infos to login">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Hyperlink layoutX="156.0" layoutY="526.0" onMouseClicked="#Forgotpw" text="Forgot your password ?" textFill="#2e247f" />
+            <Hyperlink layoutX="260.0" layoutY="485.0" onMouseClicked="#registerbutton" text="Register now !" textFill="#2e247f" />
+            <Text fill="#2e247f" layoutX="108.0" layoutY="502.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account ?">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="164.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/0WqxlY-LogoMakr.png" />
+               </image>
+            </ImageView>
+            <Text fill="#2e247f" layoutX="53.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="System Bold" size="34.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="35.0" fitWidth="25.0" layoutX="75.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/single-lpa.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="25.0" layoutX="75.0" layoutY="275.0" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/7058025.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FXMLcontrollers.RegisterController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="167.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fitHeight="113.0" fitWidth="132.0" layoutX="12.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/0WqxlY-LogoMakr.png" />
+               </image>
+            </ImageView>
+         </children></Pane>
+      <ImageView fitHeight="600.0" fitWidth="583.0" layoutX="167.0" layoutY="-1.0" opacity="0.12" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/R.jpeg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="FullName" layoutX="200.0" layoutY="200.0" promptText="Full name" style="-fx-border-color: #2e247f;" />
+      <TextField fx:id="Email" layoutX="200.0" layoutY="275.0" promptText="Email" style="-fx-border-color: #2e247f;" />
+      <TextField fx:id="Username" layoutX="526.0" layoutY="200.0" promptText="Username" style="-fx-border-color: #2e247f;" />
+      <Text fill="#2e247f" layoutX="201.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration :" wrappingWidth="167.1448974609375">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Text>
+      <Button fx:id="Submit" layoutX="590.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#Register" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: #3aaa35;" text="Submit" />
+      <ComboBox fx:id="Departement" layoutX="527.0" layoutY="357.0" prefWidth="150.0" promptText="Departement" />
+      <PasswordField fx:id="Password" layoutX="526.0" layoutY="275.0" promptText="Password" style="-fx-border-color: #2e247f;" />
+      <Separator layoutX="440.0" layoutY="139.0" orientation="VERTICAL" prefHeight="290.0" prefWidth="6.0" />
+      <Button fx:id="Reset" layoutX="209.0" layoutY="535.0" mnemonicParsing="false" onMouseClicked="#ResetALL" style="-fx-background-color: #0000;" text="Reset all" textFill="#2e247f" />
+      <DatePicker fx:id="Birthday" layoutX="200.0" layoutY="358.0" prefHeight="26.0" prefWidth="151.0" promptText="Date" />
+      <Text fill="#2e247f" layoutX="209.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill out the informations below !" />
+      <Hyperlink layoutX="407.0" layoutY="538.0" onMouseClicked="#switchlogin" text="Login ?" textFill="#2e247f" />
+   </children>
+</AnchorPane>

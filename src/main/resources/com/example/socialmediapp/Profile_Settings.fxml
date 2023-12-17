@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1220.0" stylesheets="@settings.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.FXMLcontrollers.Modifyprofile">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="340.0" spacing="50.0" styleClass="primary-color" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <VBox alignment="CENTER" prefHeight="202.0" prefWidth="340.0" spacing="15.0">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fx:id="Profilepic" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" styleClass="ProfileImg_border">
+                     <image>
+                        <Image url="@images/user.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="Username2" text="Lamini abdellah" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button mnemonicParsing="false" onMouseClicked="#editpfp" prefHeight="30.0" prefWidth="105.0" styleClass="button-editprofile" text="Edit Profile" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="320.0" prefWidth="340.0" spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER" onMouseClicked="#UserProfile" prefHeight="45.0" prefWidth="200.0" styleClass="selected-border">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/home.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="32.0" prefWidth="102.0" text="Profile" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#Notifications" prefHeight="45.0" prefWidth="200.0" styleClass="selected">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/bell.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="32.0" prefWidth="111.0" text="Notifications" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="200.0" styleClass="selected">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/232962.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="32.0" prefWidth="102.0" text="Password" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="100.0" prefHeight="45.0" prefWidth="200.0" styleClass="selected">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/free-settings-icon-3110-thumb.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="32.0" prefWidth="102.0" text="Settings" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="145.0" prefHeight="45.0" prefWidth="200.0" styleClass="selected">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/1723673.png" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="32.0" prefWidth="102.0" text="Quit" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0" styleClass="secondary-color" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="17.0" prefWidth="880.0" text="Profile Settings" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="192.0" prefWidth="780.0" spacing="30.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="880.0" text="Profile Details" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="780.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="101.0" text="Name" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="49.0" prefWidth="140.0" />
+                        <TextField fx:id="Name" prefHeight="25.0" prefWidth="322.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="40.0" prefHeight="0.0" prefWidth="780.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="101.0" text="UserName" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="49.0" prefWidth="140.0" />
+                        <TextField fx:id="Username" prefHeight="25.0" prefWidth="322.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="780.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="101.0" text="Bio" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="49.0" prefWidth="140.0" />
+                        <TextField fx:id="Bio" prefHeight="25.0" prefWidth="322.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="66.0" prefHeight="0.0" prefWidth="780.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="101.0" text="Date Of Birth" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="49.0" prefWidth="140.0" />
+                        <TextField fx:id="datebirth" prefHeight="25.0" prefWidth="322.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="60.0" layoutY="126.0" prefHeight="192.0" prefWidth="780.0" spacing="30.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="880.0" text="Contact info" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="780.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="101.0" text="Phone" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="49.0" prefWidth="140.0" />
+                        <TextField fx:id="PhoneNum" prefHeight="25.0" prefWidth="322.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="40.0" prefHeight="0.0" prefWidth="780.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="101.0" text="Email" textFill="WHITE">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="49.0" prefWidth="140.0" />
+                        <TextField fx:id="Email" prefHeight="25.0" prefWidth="322.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onMouseClicked="#save" prefHeight="45.0" prefWidth="155.0" styleClass="button-editprofile" text="Save Changes" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>
