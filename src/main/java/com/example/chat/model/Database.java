@@ -7,7 +7,7 @@ import java.sql.SQLException;
 class DatabaseConnector {
 
     // JDBC URL, username, and password of MySQL server
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3307/socialmedia";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/socialmedia";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
 

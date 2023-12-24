@@ -12,7 +12,7 @@ public class DatabaseController {
     public static Connection connect() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/socialmedia", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/socialmedia", "root", "");
             statement = connection.createStatement();
             return connection;
 

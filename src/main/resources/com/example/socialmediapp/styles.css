@@ -56,4 +56,29 @@
 	-fx-border-color: transparent;
 	-fx-border-width: 0;
 }
+#scrollpane_friends_list{
+    -fx-background-color: #f1f2f6 ;
+    -fx-background-size: cover; /* Adjust as needed */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+#chatVbox{
+    -fx-background-image: url("images/whatsapp2.jpeg");
+    -fx-background-size: cover; /* Adjust as needed */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+#chat_username_box{
+    -fx-background-color: #f1f2f6  ;
+
+}
+#emoji{
+-fx-background-image: url("images/emoji.jpeg");
+    -fx-background-size: cover; /* Adjust as needed */
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+
 

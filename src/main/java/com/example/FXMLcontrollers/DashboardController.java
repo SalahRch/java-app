@@ -17,9 +17,11 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class DashboardController {
@@ -45,7 +47,7 @@ public class DashboardController {
         User user = User.userRetrieve(username);
         String profileURL = user.getProfilepic();
         if(profileURL !=null) {
-            javafx.scene.image.Image image = new javafx.scene.image.Image(profileURL, true); // enable background loading
+            javafx.scene.image.Image image = new javafx.scene.image.Image(new File(profileURL).toURI().toString(), true); // enable background loading
             image.progressProperty().addListener((obs, oldVal, newVal) -> {
                 if (newVal.doubleValue() == 1.0) { // when image has loaded
                     profilepic.setImage(image);
@@ -70,11 +72,13 @@ public class DashboardController {
             }
         });
         if(notificationController.hasNoNotifs(User.userRetrieve(UserSession.getUsername()))){
-            notifbell.setImage(new javafx.scene.image.Image("C:\\Users\\srouc\\Desktop\\bs\\battleship\\socialmediAPP\\src\\main\\resources\\com\\example\\socialmediapp\\images\\bell.png"));
+            String imagePath="src\\main\\resources\\com\\example\\socialmediapp\\images\\bell.png";
+            notifbell.setImage(new javafx.scene.image.Image(new File(imagePath).toURI().toString()));
 
         }
         else{
-            notifbell.setImage(new javafx.scene.image.Image("C:\\Users\\srouc\\Desktop\\bs\\battleship\\socialmediAPP\\src\\main\\resources\\com\\example\\socialmediapp\\images\\bellnot.png"));
+            String imagePath="src\\main\\resources\\com\\example\\socialmediapp\\images\\bellnot.png";
+            notifbell.setImage(new javafx.scene.image.Image(new File(imagePath).toURI().toString()));
         }
     }
     private void loadUserProfile(String selectedUsername) throws IOException, SQLException {

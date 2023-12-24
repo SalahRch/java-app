@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.security.cert.PolicyNode;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -83,18 +84,21 @@ public class AddUtilisateurController {
     public HBox createUserBox(Utilisateur user) {
         HBox userBox = new HBox();
         ImageView pdpImageView=null;
-        if(user.getPdp()==null){
-             pdpImageView = new ImageView("C:\\Users\\srouc\\Desktop\\bs\\battleship\\socialmediAPP\\src\\main\\resources\\com\\example\\socialmediapp\\images\\images.png");
-        }else {
-             pdpImageView = createPdpImageView(user.getPdp());
+        if (user.getPdp() == null) {
+            String imagePath = "C:\\Java\\ChatApp\\java-app\\src\\main\\resources\\com\\example\\socialmediapp\\images\\demo_photo.jpeg";
+            Image image = new Image(new File(imagePath).toURI().toString());
+            pdpImageView = new ImageView(image);
+        } else {
+            Image image = new Image(user.getPdp());
+            pdpImageView = new ImageView(image);
         }
         // Assuming getAvatar returns the image path
         pdpImageView.setFitHeight(46);
         pdpImageView.setFitWidth(48);
 
         Label usernameLabel = new Label(user.getUsername());
-
-        ImageView addButton = new ImageView(new Image("C:\\Users\\srouc\\Desktop\\bs\\battleship\\socialmediAPP\\src\\main\\resources\\com\\example\\socialmediapp\\images\\person.jpeg")); // Set your own path for the add button image
+        String imagePath="C:\\Java\\ChatApp\\java-app\\src\\main\\resources\\com\\example\\socialmediapp\\images\\plus.png";
+        ImageView addButton = new ImageView(new Image(imagePath)); // Set your own path for the add button image
         addButton.setFitHeight(41);
         addButton.setFitWidth(47);
 
@@ -119,13 +123,23 @@ public class AddUtilisateurController {
 
         return userBox;
     }
-    public ImageView createPdpImageView(Blob blob) {
+//    public ImageView createPdpImageView(Blob blob) {
+//        try {
+//            byte[] imageData = blob.getBytes(1, (int) blob.length());
+//            ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
+//            Image image = new Image(inputStream);
+//            return new ImageView(image);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            // Handle the exception as needed
+//            return new ImageView(); // Return a default ImageView in case of an error
+//        }
+//    }
+    public ImageView createPdpImageView(String imageUrl) {
         try {
-            byte[] imageData = blob.getBytes(1, (int) blob.length());
-            ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
-            Image image = new Image(inputStream);
+            Image image = new Image(imageUrl);
             return new ImageView(image);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             // Handle the exception as needed
             return new ImageView(); // Return a default ImageView in case of an error

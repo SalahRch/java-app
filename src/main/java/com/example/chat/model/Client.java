@@ -45,7 +45,7 @@ public class Client implements Runnable {
         try {
             if (client != null) {
                 DataOutputStream out = new DataOutputStream(client.getOutputStream());
-                out.writeUTF(message+" "+AppQuery_main.Me.getId());
+                out.writeUTF(message+" "+AppQuery_main.id);
                 out.flush();
             }
         } catch (IOException e) {

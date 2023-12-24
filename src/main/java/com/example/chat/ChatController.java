@@ -37,6 +37,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import static com.example.chat.model.AppQuery.Me;
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class ChatController {
     public User userz = new User();
@@ -137,6 +138,8 @@ public class ChatController {
     public Button sendbutton;
     @FXML
     public VBox add_utilisateur_vbox;
+    @FXML
+    public HBox emoji_box;
 
     public Socket clientSocket;
     public DataInputStream inputStream;
@@ -153,8 +156,17 @@ public class ChatController {
 
     @FXML
     public void initialize() {
-    }
+        message_text.setOnAction(event -> sendMessage());
+        go_back.setOnMouseClicked(event -> closeWindow());
 
+    }
+    public void closeWindow() {
+        // Get the current stage of the ImageView
+        Stage stage = (Stage) go_back.getScene().getWindow();
+
+        // Close the stage
+        stage.close();
+    }
 
     @FXML
     public void switchToAddUtilisateur() {
@@ -225,7 +237,8 @@ public class ChatController {
 
         ImageView pdpImageView=null;
         if(user.getPdp()==null){
-            pdpImageView = new ImageView("C:\\Users\\srouc\\Desktop\\bs\\battleship\\socialmediAPP\\src\\main\\resources\\com\\example\\socialmediapp\\images\\person.jpeg");
+            String imagePath="C:\\Java\\ChatApp\\java-app\\src\\main\\resources\\com\\example\\socialmediapp\\images\\demo_photo.jpeg";
+            pdpImageView = new ImageView(new Image(imagePath));
 
         }else {
             pdpImageView = createPdpImageView(user.getPdp());
@@ -253,7 +266,13 @@ public class ChatController {
 
         User otheruser= new User();
         int other_id =otheruser.user_id(user.getUsername());
+        userBox.setOnMouseEntered(e -> {
+            userBox.setStyle("-fx-background-color: #ffffff;");
+        });
 
+        userBox.setOnMouseExited(e -> {
+            userBox.setStyle("-fx-background-color: #f1f2f6;");
+        });
 
         userBox.setOnMouseClicked(event -> {
             // Establish connection when the user box is clicked
@@ -263,7 +282,7 @@ public class ChatController {
             userBox.setStyle("-fx-background-color: #d3d3d3;"); // Change background color when clicked
 
             Timeline timeline = new Timeline(
-                    new KeyFrame(Duration.seconds(0.7), e -> {
+                    new KeyFrame(Duration.seconds(0.5), e -> {
                         userBox.setStyle(originalStyle); // Revert to the original background color after 1 second
                     })
             );
@@ -273,13 +292,23 @@ public class ChatController {
         return userBox;
     }
 
-    public ImageView createPdpImageView(Blob blob) {
+//    public ImageView createPdpImageView(Blob blob) {
+//        try {
+//            byte[] imageData = blob.getBytes(1, (int) blob.length());
+//            ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
+//            Image image = new Image(inputStream);
+//            return new ImageView(image);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            // Handle the exception as needed
+//            return new ImageView(); // Return a default ImageView in case of an error
+//        }
+//    }
+    public ImageView createPdpImageView(String imageUrl) {
         try {
-            byte[] imageData = blob.getBytes(1, (int) blob.length());
-            ByteArrayInputStream inputStream = new ByteArrayInputStream(imageData);
-            Image image = new Image(inputStream);
+            Image image = new Image(imageUrl);
             return new ImageView(image);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             // Handle the exception as needed
             return new ImageView(); // Return a default ImageView in case of an error
@@ -298,7 +327,8 @@ public class ChatController {
         // Set the username and profile picture in the chat_username_box
         ImageView pdpImageView=null;
         if(user.getPdp()==null){
-            pdpImageView = new ImageView("C:\\Users\\srouc\\Desktop\\bs\\battleship\\socialmediAPP\\src\\main\\resources\\com\\example\\socialmediapp\\images\\person.jpeg");
+            String imagePath="C:\\Java\\ChatApp\\java-app\\src\\main\\resources\\com\\example\\socialmediapp\\images\\demo_photo.jpeg";
+            pdpImageView = new ImageView(new Image(imagePath));
 
         }else {
             pdpImageView = createPdpImageView(user.getPdp());
@@ -306,7 +336,7 @@ public class ChatController {
         pdpImageView.setFitHeight(53);
         pdpImageView.setFitWidth(34);
 
-        chat_username_box.setStyle("-fx-background-color: #d3d3d3 ;   -fx-border-radius: 10px;");
+        chat_username_box.setStyle("-fx-background-color: #f1f2f6 ;   -fx-border-radius: 10px;");
 
         // Apply styles to the profile picture
         pdpImageView.setStyle("-fx-background-color: #FFFFFF; -fx-border-color: #FFFFFF; -fx-border-radius: 5px; -fx-padding: 5px;");
@@ -349,16 +379,22 @@ public class ChatController {
     }
 
     public void displaySentMessage(Message message) {
-        HBox sentMessage = createMessageContainer(message.getMessageContent(), message.getTimestamp(), true);
-        chatVbox.getChildren().add(sentMessage);
-        chatScrollPane.setVvalue(1.0);
+        String messageContent = message.getMessageContent(); // Get the message content
+
+        if (messageContent != null && !messageContent.trim().isEmpty()) {
+            HBox sentMessage = createMessageContainer(messageContent, message.getTimestamp(), true);
+            chatVbox.getChildren().add(sentMessage);
+            chatScrollPane.setVvalue(1.0);
+        }
     }
 
     public void displayReceivedMessage(Message message) {
+        String messageContent = message.getMessageContent(); // Get the message content
+
+        if (messageContent != null && !messageContent.trim().isEmpty()) {
         HBox receivedMessage = createMessageContainer(message.getMessageContent(), message.getTimestamp(), false);
         chatVbox.getChildren().add(receivedMessage);
-
-        chatScrollPane.setVvalue(1.0);
+        chatScrollPane.setVvalue(1.0);}
     }
 
 
@@ -379,12 +415,12 @@ public class ChatController {
             messageBox.setAlignment(Pos.CENTER_RIGHT);
             messageLabel.setTranslateX(-5);
             messageLabel.setStyle("-fx-background-color: #DCF8C6; -fx-background-radius: 10; -fx-padding: 8px;");
-            timestampLabel.setStyle("-fx-font-size:8px; -fx-font-weight: bold; -fx-text-fill: #999999; -fx-padding: 2px 4px; -fx-background-color: #f2f2f2; -fx-background-radius: 4px;");
+            timestampLabel.setStyle("-fx-margin-bottom: 85px;-fx-font-size:8px; -fx-font-weight: bold; -fx-text-fill: #999999; -fx-padding: 2px 4px; -fx-background-color: #f2f2f2; -fx-background-radius: 4px;");
         } else {
             messageBox.setAlignment(Pos.CENTER_LEFT);
-            messageLabel.setTranslateX(5);
+            messageLabel.setTranslateX(2);
             messageLabel.setStyle("-fx-background-color: #FFFFFF; -fx-background-radius: 10; -fx-padding: 8px;");
-            timestampLabel.setStyle("-fx-font-size: 8px; -fx-font-weight: bold; -fx-text-fill: #999999; -fx-padding: 2px 4px; -fx-background-color: #f2f2f2; -fx-background-radius: 4px;");
+            timestampLabel.setStyle("-fx-margin-bottom: 85px;-fx-font-size: 8px; -fx-font-weight: bold; -fx-text-fill: #999999; -fx-padding: 2px 4px; -fx-background-color: #f2f2f2; -fx-background-radius: 4px;");
         }
 
         // Add message content and timestamp labels to the messageBox
@@ -395,6 +431,133 @@ public class ChatController {
         return messageBox;
     }
     /////////////////////////////////////////////////////////
+    public void createEmojiBox() {
+        // Spacing between emoji buttons
+        message_text.setPrefWidth(0);
+        message_text.setPrefHeight(0);
+        message_text.setTranslateX(0);
+        message_text.setTranslateY(0);
+        emoji_box.setPrefHeight(31.0);
+        emoji_box.setPrefWidth(342.0);
+        emoji_box.setTranslateX(3.0);
+        emoji_box.setTranslateY(7.0);
+        // Example emoji buttons
+        Button emoji1 = new Button("\uD83D\uDE0A");
+        emoji1.setPrefHeight(40.0);
+        emoji1.setPrefWidth(45.0);
+        emoji1.setTranslateY(-8);
+        emoji1.setStyle(
+                "-fx-background-image: url('images/smile_emoji.jpeg');" +
+                        "-fx-background-size: cover;" +
+                        "-fx-background-repeat: no-repeat;" +
+                        "-fx-background-position: center center;"
+        );// Unicode representation of the emoji
+        emoji1.setOnAction(event -> {
+            System.out.println("Selected emoji: " + emoji1.getText());
+            sendMessage(emoji1.getText());
+            resetMessageText();
+        });
+        Button emoji2 = new Button("\u2764");
+        emoji2.setPrefHeight(40.0);
+        emoji2.setPrefWidth(45.0);
+        emoji2.setTranslateY(-8);
+
+        emoji2.setStyle(
+                "-fx-background-image: url('images/angry_emoji.jpeg');" +
+                        "-fx-background-size: cover;" +
+                        "-fx-background-repeat: no-repeat;" +
+                        "-fx-background-position: center center;"
+        );// Unicode representation of the emoji
+        emoji2.setOnAction(event -> {
+            System.out.println("Selected emoji: " + emoji2.getText());
+            sendMessage(emoji2.getText());
+            resetMessageText();
+        });
+        Button emoji3 = new Button("\uD83D\uDE20");
+        emoji3.setPrefHeight(40.0);
+        emoji3.setPrefWidth(45.0);
+        emoji3.setTranslateY(-8);
+
+        emoji3.setStyle(
+                "-fx-background-image: url('images/heart_emoji.jpeg');" +
+                        "-fx-background-size: cover;" +
+                        "-fx-background-repeat: no-repeat;" +
+                        "-fx-background-position: center center;"
+        );// Unicode representation of the emoji
+        emoji3.setOnAction(event -> {
+            System.out.println("Selected emoji: " + emoji3.getText());
+            sendMessage(emoji3.getText());
+            resetMessageText();
+        });
+        Button emoji4 = new Button("\uD83D\uDE21");
+        emoji4.setPrefHeight(40.0);
+        emoji4.setPrefWidth(45.0);
+        emoji4.setTranslateY(-8);
+
+        emoji4.setStyle(
+                "-fx-background-image: url('images/swearing_emoji.jpeg');" +
+                        "-fx-background-size: cover;" +
+                        "-fx-background-repeat: no-repeat;" +
+                        "-fx-background-position: center center;"
+        );// Unicode representation of the emoji
+        emoji4.setOnAction(event -> {
+            System.out.println("Selected emoji: " + emoji4.getText());
+            sendMessage(emoji4.getText());
+            resetMessageText();
+        });
+
+        Button reset = new Button("Text");
+        reset.setPrefHeight(40.0);
+        reset.setPrefWidth(45.0);
+        reset.setTranslateY(-8);
+
+        reset.setOnAction(event -> {
+            resetMessageText();
+        });
+        // Add more emoji buttons as needed
+
+        if (emoji_box.getChildren().size() < 4)
+            emoji_box.getChildren().addAll(emoji1, emoji2,emoji3,emoji4,reset);
+        emoji_box.setAlignment(Pos.CENTER);
+        // Add emoji buttons to the VBox
+        emoji_box.setPadding(new Insets(8)); // Padding for the VBox
+
+
+
+    }
+    private void resetMessageText() {
+        emoji_box.getChildren().clear();
+        emoji_box.setPrefHeight(0);
+        emoji_box.setPrefWidth(0);
+        emoji_box.setTranslateX(0);
+        emoji_box.setTranslateY(0);
+
+        message_text.setPrefHeight(31.0);
+        message_text.setPrefWidth(342.0);
+        message_text.setTranslateX(3.0);
+        message_text.setTranslateY(7.0);
+    }
+    @FXML
+    public void sendMessage(String a) {
+        String messageText = a; // Get text from the messagetext TextField
+
+        // Get the IDs of the sender and receiver
+        int yourUserId = id;
+        int otherUserId = currentChatUser.getId();
+
+        // Save the message to the database
+        boolean messageSent = AppQuery_main.saveMessageToDatabase(yourUserId, otherUserId, messageText);
+
+        if (currentChatUser!=null) {
+
+            Message msg=new Message(messageText);
+            displaySentMessage(msg);
+            if (activeClient != null  ) {
+                activeClient.sendMessage(messageText);
+            }}
+        // Create unique ports for each user pair or utilize a different strategy to differentiate communication
+
+    }
     @FXML
     public void sendMessage() {
         String messageText = message_text.getText(); // Get text from the messagetext TextField

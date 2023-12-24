@@ -8,17 +8,17 @@ public class Utilisateur {
     private String email=null;
     private String password=null;
     private Date date=null;
-    private Blob avatar=null;
+    private String avatar=null;
     private  int Id;
 
-    public Utilisateur(int id,String username, String email,String mdp) {
-        this.username = username;
-        this.password=mdp;
-        this.date = new Date();
-        this.Id=id;
-    }
+//    public Utilisateur(int id,String username, String email,String mdp) {
+//        this.username = username;
+//        this.password=mdp;
+//        this.date = new Date();
+//        this.Id=id;
+//    }
 
-    public Utilisateur(int id ,String username, String email,Blob pdp) {
+    public Utilisateur(int id ,String username, String email,String pdp) {
         this.username = username;
         this.email = email;
         this.avatar = pdp;
@@ -36,7 +36,7 @@ public class Utilisateur {
         this.password = password;
         this.date = new Date();
     }
-    public Utilisateur(String username, String email, String password, Date date, Blob pdp) {
+    public Utilisateur(String username, String email, String password, Date date, String pdp) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -60,7 +60,7 @@ public class Utilisateur {
         this.date = date;
     }
 
-    public void setPdp(Blob pdp) {
+    public void setPdp(String pdp) {
         this.avatar = pdp;
     }
 
@@ -80,8 +80,9 @@ public class Utilisateur {
         return (java.sql.Date) date;
     }
 
-    public com.mysql.cj.jdbc.Blob getPdp() {
-        return (com.mysql.cj.jdbc.Blob) avatar;
+    public String getPdp() {
+
+        return avatar;
     }
 
     public int getId() {

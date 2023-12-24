@@ -36,7 +36,7 @@ public class AppQuery_main {
                 int id=resultSet.getInt("User_ID");
                 String username = resultSet.getString("Username");
                 String email = resultSet.getString("Email");
-                Blob avatar = resultSet.getBlob("Profile_Picture_URL");
+                String avatar = resultSet.getString("Profile_Picture_URL");
                 Date date = resultSet.getDate("Join_Date");
 
                 // Create a Utilisateur object

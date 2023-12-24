@@ -78,7 +78,7 @@ public class Modifyprofile {
 
         if (selectedFile != null) {
             String filePath = selectedFile.getAbsolutePath();
-            String destinationPath = "C:\\Users\\srouc\\Desktop\\bs\\battleship\\socialmediAPP\\src\\main\\resources\\com\\example\\socialmediapp\\images" + selectedFile.getName();
+            String destinationPath = "images" + selectedFile.getName();
             File destinationFile = new File(destinationPath);
             try {
                 Files.copy(selectedFile.toPath(), destinationFile.toPath());

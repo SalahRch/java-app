@@ -11,7 +11,7 @@ public class NotificationController {
 
     public NotificationController() {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/socialmedia", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/socialmedia", "root", "");
         } catch (SQLException e) {
             e.printStackTrace();
         }
